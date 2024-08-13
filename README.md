@@ -1,5 +1,7 @@
 # ldla-server-uploader-cloudinary
 
+![Description de l'image](/src/images/startServerPm2.png)
+
 ## Description
 
 `ldla-server-uploader-cloudinary` est un composant npm qui permet de mettre en place un serveur Express pour gérer l'upload, la récupération et la suppression d'images via l'API Cloudinary. Ce package est conçu pour être facilement intégré dans un projet Node.js.
@@ -38,27 +40,22 @@ Implémentation
 
 Dans votre fichier principal (par exemple, index.js), importez et utilisez le package :
 
-require('dotenv').config();
-const myImageServer = require('my-image-server');
-myImageServer.start();
+const { start } = require('ldla-server-uploader-cloudinary');
 
-Options de configuration
+// Démarre le serveur fourni par le composant //
+start({
+  port: 3001, // Spécifie le port sur lequel vous voulez démarrer le serveur //
+    cloudinary: {
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET
+    },
+    corsOptions: {
+        origin: '*', // On peut configurer les options CORS ici si nécessaire //
+    }
+});
 
-Vous pouvez également personnaliser le serveur en passant un objet de configuration :
-
-const config = {
-  port: process.env.PORT || 3001,
-  cloudinary: {
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-  },
-  corsOptions: {
-    origin: '*',
-  }
-};
-
-myImageServer.start(config);
+// Plus besoin de `app.listen`, car `start` gère le démarrage du serveur //
 
 Routes API disponibles
 

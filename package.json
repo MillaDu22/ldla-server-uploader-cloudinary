@@ -1,0 +1,41 @@
+{
+  "name": "ldla-server-uploader-cloudinary",
+  "version": "1.0.2",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "babel src --out-dir dist",
+    "pm2-start": "pm2 start dist/index.js --name ldla-server-uploader-cloudinary",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "image",
+    "upload",
+    "server",
+    "cloudinary",
+    "node",
+    "express"
+  ],
+  "author": "Ldla Mti",
+  "license": "MIT",
+  "description": "A Node.js server for uploading, managing, and deleting images with Cloudinary.",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "cloudinary": "^2.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/cli": "^7.15.8",
+    "@babel/preset-env": "^7.15.8"
+  }
+}

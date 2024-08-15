@@ -26,7 +26,9 @@ function start() {
   var upload = multer({
     storage: storage
   });
-  app.use(cors(customConfig.corsOptions || {}));
+  app.use(cors(customConfig.corsOptions || {
+    origin: '*'
+  }));
   app.use(express.json());
   app.post('/upload', upload.array('images', 11), /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {

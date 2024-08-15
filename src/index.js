@@ -21,7 +21,7 @@ function start(customConfig = {}) {
     const storage = multer.memoryStorage();
     const upload = multer({ storage: storage });
 
-    app.use(cors(customConfig.corsOptions || {}));
+    app.use(cors(customConfig.corsOptions || { origin: '*' }));
     app.use(express.json());
 
     app.post('/upload', upload.array('images', 11), async (req, res) => {
